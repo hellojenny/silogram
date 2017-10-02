@@ -1,0 +1,21 @@
+{
+  "name": "silogram-backend",
+  "version": "1.0.0",
+  "description": "Backend for Silogram.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hellojenny/silogram/tree/master/silogram-backend"
+  },
+  "author": "\"Jenny Liu Zhang <jennylzh@usc.edu>",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.1",
+    "mongoose": "^4.11.14"
+  }
+}
