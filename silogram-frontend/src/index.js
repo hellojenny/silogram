@@ -7,14 +7,14 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import AddSilo from './components/AddSilo';
+import AddItem from './components/AddItem';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(
 	<Router>
 		<div>
 			<App />
-			<Route path='/add-silo' component={AddSilo} />
+			<Route path='/add-item' component={AddItem} />
 		</div>
 	</Router>,
 	document.getElementById('root')
