@@ -4,17 +4,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './index.css';
 
-import App from './App';
+import Slide from './Slide';
 import registerServiceWorker from './registerServiceWorker';
-
-import AddItem from './components/AddItem';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(
 	<Router>
-		<div>
-			<App />
-			<Route path='/add-item' component={AddItem} />
+		<div id="content">
+			<Slide />
 		</div>
 	</Router>,
 	document.getElementById('root')
