@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 // import './Textbox.css';
 
-class Textbox extends Component {
+class BoxEditor extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      value: '',
     };
 
     this._handleTextChange = this._handleTextChange.bind(this);
   }
+
+  _handleTextChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
 
   componentWillMount() {
     // this.app is undefined
@@ -25,18 +29,13 @@ class Textbox extends Component {
     // this.app.removeeventlistner
   }
 
-  _handleTextChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
   render() {
     return (
-      <div className="textbox">
-        <input type="text" value={this.state.value} onChange={this._handleTextChange}/>
-        {this.state.value}
+      <div>
+        DSFJLSDJFK
       </div>
     );
   }
 }
 
-export default Textbox;
+export default BoxEditor;

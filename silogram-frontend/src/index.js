@@ -4,15 +4,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './index.css';
 
-import Slide from './Slide';
+import Content from './Content';
 import registerServiceWorker from './registerServiceWorker';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(
 	<Router>
-		<div id="content">
-			<Slide />
-		</div>
+			<Content />
 	</Router>,
 	document.getElementById('root')
 );
