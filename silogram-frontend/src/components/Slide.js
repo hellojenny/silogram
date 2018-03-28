@@ -13,12 +13,10 @@ class Slide extends Component {
     super(props);
 
     this._slideRightClick = this._slideRightClick.bind(this);
-    this._addTextBox = this._addTextBox.bind(this);
+    this._addBox = this._addBox.bind(this);
     this._addImage = this._addImage.bind(this);
     this._hideMenu = this._hideMenu.bind(this);
     this._renderObject = this._renderObject.bind(this);
-    this._onChangeEditor = this._onChangeEditor.bind(this);
-    this.handleKeyCommand = this._handleKeyCommand.bind(this);
     this._setSelectedObject = this._setSelectedObject.bind(this);
 
     this.state = {
@@ -27,8 +25,8 @@ class Slide extends Component {
       backgroundColor: '#eee',
       rightClickMenu: [
         { title: 'Add a text box',
-          callback: this._addTextBox,
-          key: 'textbox' },
+          callback: this._addBox,
+          key: 'box' },
         { title: 'Add an image',
           callback: this._addImage,
           key: 'image' },
@@ -50,11 +48,11 @@ class Slide extends Component {
     // console.log(event);
   }
 
-  _addTextBox() {
+  _addBox() {
     console.log('im supposed to add a txtbox', );
     this.setState({
       objects: [...this.state.objects, {
-        type: 'textbox',
+        type: 'box',
         key: this.state.iterator.toString(),
         pos: this.state.cursor,
         editorState: EditorState.createEmpty(),
@@ -96,29 +94,31 @@ class Slide extends Component {
     // this.app.removeeventlistner
   }
 
-  _onChangeEditor(editorState, i) {
-    let newObjects = this.state.objects;
-    newObjects[i].editorState = editorState;
-    return this.setState({ objects: newObjects });
-  }
+  // _onChangeEditor(editorState, i) {
+  //   let newObjects = this.state.objects;
+  //   newObjects[i].editorState = editorState;
+  //   return this.setState({ objects: newObjects });
+  // }
 
-_handleKeyCommand(command, editorState, i) {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this._onChangeEditor(newState, i);
-      return 'handled';
-    }
-    return 'not-handled';
-}
+// _handleKeyCommand(command, editorState, i) {
+//     const newState = RichUtils.handleKeyCommand(editorState, command);
+//     if (newState) {
+//       this._onChangeEditor(newState, i);
+//       return 'handled';
+//     }
+//     return 'not-handled';
+// }
+
+  // _onBoldClick(i) {
+  //   this.onChangeEditor(RichUtils.toggleInlineStyle(editorState, 'BOLD'), i);
+  // }
 
   _renderObject(item, i) {
     switch (item.type) {
-      case 'textbox': {
+      case 'box': {
         return <Box index={i} onSelect={this._setSelectedObject} key={item.key} pos={item.pos}>
-          <Editor
+          <BoxEditor
             editorState={item.editorState}
-            handleKeyCommand={(command, editorState) => this._handleKeyCommand(command, editorState, i)}
-            onChange={(editorState) => this._onChangeEditor(editorState, i)}
           />
         </Box>;
         // return <Textbox key={item.key} pos={item.pos} />;
@@ -132,7 +132,7 @@ _handleKeyCommand(command, editorState, i) {
   render() {
     return (
       <div>
-        <BoxEditor />
+        {/* <BoxEditor /> */}
 
         <div onClick={this._hideMenu} ref={slide => { this.slide = slide; }} className="slide" style={{background: this.state.backgroundColor }}>
           {this.state.objects.map(this._renderObject)}

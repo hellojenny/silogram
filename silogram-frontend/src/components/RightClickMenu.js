@@ -26,7 +26,9 @@ class RightClickMenu extends Component {
   render() {
     return (
       <ul className="rightClickMenu" style={{top: this.props.pos.y+'px', left: this.props.pos.x+'px' }}>
-        {this.props.contextMenuItems.map(function (item) { return <li key={item.key} onClick={item.callback}>{item.title}<br/></li>; })}
+        {this.props.contextMenuItems.map(function (item) {
+          return <li key={item.key} onClick={item.callback}>{item.title}<br/></li>;
+        })}
       </ul>
     );
   }
